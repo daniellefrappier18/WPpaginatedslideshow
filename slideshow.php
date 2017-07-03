@@ -6,11 +6,7 @@ echo '<div>';
 edit_post_link('Edit'); 
 echo '</div>';
 ?>
-<article id="slideshowSingle" class="content-section">
-	<?php
-	// share button desktop
-	get_template_part('partials/shared/shareButtons');
-	?>
+<article>
 	<div class="back-to-article">
 		Back to article:
 		<h1><a href="<?php echo get_BackToArticleLink(); ?>"><?php the_title(); ?></a></h1> 
@@ -28,15 +24,6 @@ echo '</div>';
 	foreach ( $allThumbs as $thisThumb ) { ?>
 		<a href="<?php echo $thisThumb['url']; ?>"><img class="slideshow-nav-thumbs" src="<?php echo $thisThumb['thumb']; ?>" /></a>
 	<?php } ?>
-	<div id="content-footer"></div>
-	<?php
-
-	//if ( get_IsThisSlideValid() === TRUE ) { }
-	//else { } 
-
-	// share button mobile
-	get_template_part('partials/shared/shareButtonsMobile');
-	?>
 </article>
 
 <?php

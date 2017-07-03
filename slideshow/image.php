@@ -1,7 +1,7 @@
 <?php
 
-$image = isset($GLOBALS['eh_slide_resourceUrl']) ? $GLOBALS['eh_slide_resourceUrl'] : '';
-$caption = isset($GLOBALS['eh_slide_caption']) ? $GLOBALS['eh_slide_caption'] : '';
+$image = isset($GLOBALS['slide_resourceUrl']) ? $GLOBALS['slide_resourceUrl'] : '';
+$caption = isset($GLOBALS['slide_caption']) ? $GLOBALS['slide_caption'] : '';
 
 ?>
 <div class="slideshow-wrapper">

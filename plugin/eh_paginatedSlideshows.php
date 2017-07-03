@@ -1,13 +1,10 @@
 <?php
 /*
-Plugin Name: EH Paginated Slideshows
+Plugin Name: Paginated Slideshows
 Plugin URI: http://www.commercialintegrator.com/
-Description: Paginated slideshows for WordPress! A new pageload for each slide in a slideshow, that can be related to a particular post or page.
-Version: 1.0
-Author: John Brillon, Guy Caiola, Danielle Frappier, Allison Shapanka, Pete Smith, Keri Whoriskey, Zack Worden
+Description: Paginated slideshows for WordPress!
 
 NOTES:
-
 To use, install & activate plugin.
 You will then need to create a new WordPress template that handles all individual "slides" - slideshow.php
 
@@ -21,23 +18,23 @@ Activation / Deactivation
 	on activation, copy the ACF file into the current theme's acf-json folder, creating it if necesssary
 	also, we need to flush rewrite rules to avoid /slideshow/ not returning anything. this plugin adjusts them, so we need to flush rules for this to take effect.
 	*/
-	function EH_Slides_Activate()
+	function Slides_Activate()
 	{
-		//EH_Slides_MoveAcfFile();
+		//Slides_MoveAcfFile();
 		flush_rewrite_rules();
 	}
 	/*
 	on deactivation, remove the ACF file from the current thtme's acf-json folder.
 	flush rewrite rules, as we will no longer be interpreting /slideshow/[0-9]+ as anything.
 	*/
-	function EH_Slides_Deactivate()
+	function Slides_Deactivate()
 	{
-		//EH_Slides_RemoveAcfFile();
+		//Slides_RemoveAcfFile();
 		flush_rewrite_rules();
 	}
 
 	// this will delete the ACF file from the template directory - the file will remain intact in the plugin folder
-	function EH_Slides_RemoveAcfFile()
+	function Slides_RemoveAcfFile()
 	{
 		$pluginAcfFileName = 'group_580a5c473e2b2.json';
 		$themeDir = get_template_directory();
@@ -46,10 +43,10 @@ Activation / Deactivation
 		unlink ($acfFolder . '/' . $pluginAcfFileName );
 	}
 	// this copies the ACF file from the plugin folder into the currently active theme directory, creating the folder if necessary
-	function EH_Slides_MoveAcfFile()
+	function Slides_MoveAcfFile()
 	{
 		$pluginAcfFileName = 'group_580a5c473e2b2.json';
-		$pluginAcfFile = ABSPATH . '/wp-content/plugins/eh_paginatedSlideshows/acf-json/' . $pluginAcfFileName;
+		$pluginAcfFile = ABSPATH . '/wp-content/plugins/paginatedSlideshows/acf-json/' . $pluginAcfFileName;
 
 		$themeDir = get_template_directory();
 		$acfFolder = $themeDir . '/acf-json';
@@ -69,8 +66,8 @@ Activation / Deactivation
 		}
 	}
 
-	register_activation_hook( __FILE__, 'EH_Slides_Activate');
-	register_deactivation_hook( __FILE__, 'EH_Slides_Deactivate');
+	register_activation_hook( __FILE__, 'Slides_Activate');
+	register_deactivation_hook( __FILE__, 'Slides_Deactivate');
 /*
 Slide thumbnail navigation
 */
